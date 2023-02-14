@@ -97,7 +97,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 4
     - _RequireSplitLighting: 0
-    - _RippleDensity: 20
+    - _RippleDensity: 25
     - _RippleSpeed: 1
     - _RippleThickness: 5
     - _SrcBlend: 1
@@ -121,7 +121,7 @@ Material:
     - _TransparentWritingMotionVec: 0
     - _TransparentZWrite: 0
     - _UseShadowThreshold: 0
-    - _WaveHeight: 0.2
+    - _WaveHeight: 0.05
     - _WaveSpeed: 0.1
     - _ZTestDepthEqualForOpaque: 4
     - _ZTestGBuffer: 4
