@@ -8,6 +8,11 @@ public class Alligator : MonoBehaviour
     GameObject player;
     NavMeshAgent nav;
 
+    [SerializeField]
+    float wanderSpeed;
+    [SerializeField]
+    float chaseSpeed;
+
     bool wandering = true;
     float moveTimer = 0;
     float moveTimerTotal = 3;
@@ -26,7 +31,7 @@ public class Alligator : MonoBehaviour
             if (Vector3.Distance(transform.position, player.transform.position) < 25)
             {
                 nav.SetDestination(player.transform.position);
-                nav.speed = 4f;
+                nav.speed = chaseSpeed;
                 wandering = false;
             }
             else
@@ -47,7 +52,7 @@ public class Alligator : MonoBehaviour
             {
                 moveTimer = 0;
                 nav.SetDestination(transform.position + new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f)));
-                nav.speed = 3f;
+                nav.speed = wanderSpeed;
             }
             else
             {

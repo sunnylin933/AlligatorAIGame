@@ -6,10 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     private SpriteRenderer renderer;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
         renderer = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if(rb.detectCollisions) rb.detectCollisions = false;
             if(renderer.enabled) renderer.enabled = false;
         }
     }

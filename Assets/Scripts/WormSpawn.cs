@@ -7,8 +7,8 @@ public class WormSpawn : MonoBehaviour
     [SerializeField]
     GameObject prefab;
 
-    float spawnTimer = 0;
-    float spawnTimerTotal = 5;
+    float spawnTimer = 0f;
+    float spawnTimerTotal = 2f;
     // Start is called before the first frame update
     void Start()
     {
