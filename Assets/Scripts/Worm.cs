@@ -18,6 +18,7 @@ public class Worm : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        GameManager.instance.AddWorm();
         Destroy(gameObject);
     }
 }

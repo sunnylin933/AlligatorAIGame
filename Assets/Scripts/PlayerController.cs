@@ -15,23 +15,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.D))
+        if(!GameManager.instance.GetGameStatus()) 
         {
-            transform.position += Vector3.right * playerSpeed * Time.deltaTime;
-            renderer.flipX = false;
+            if (Input.GetKey(KeyCode.D))
+            {
+                transform.position += Vector3.right * playerSpeed * Time.deltaTime;
+                renderer.flipX = false;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                transform.position += Vector3.left * playerSpeed * Time.deltaTime;
+                renderer.flipX = true;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.position += Vector3.forward * playerSpeed * Time.deltaTime;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                transform.position += Vector3.back * playerSpeed * Time.deltaTime;
+            }
         }
-        if (Input.GetKey(KeyCode.A))
+        else
         {
-            transform.position += Vector3.left * playerSpeed * Time.deltaTime;
-            renderer.flipX = true;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * playerSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * playerSpeed * Time.deltaTime;
+            if(renderer.enabled) renderer.enabled = false;
         }
     }
 }

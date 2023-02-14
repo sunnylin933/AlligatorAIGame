@@ -21,17 +21,24 @@ public class Alligator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < 25)
+        if(!GameManager.instance.GetGameStatus())
         {
-            nav.SetDestination(player.transform.position);
-            nav.speed = 4f;
-            wandering = false;
+            if (Vector3.Distance(transform.position, player.transform.position) < 25)
+            {
+                nav.SetDestination(player.transform.position);
+                nav.speed = 4f;
+                wandering = false;
+            }
+            else
+            {
+                if (!wandering) wandering = true;
+            }
         }
         else
         {
-            if(!wandering) wandering = true;
+            if (!wandering) wandering = true;
         }
-
+        
         FaceDirection();
 
         if(wandering)
@@ -48,7 +55,7 @@ public class Alligator : MonoBehaviour
             }
         }
 
-        if(Vector3.Distance(transform.position, player.transform.position) > 85)
+        if (Vector3.Distance(transform.position, player.transform.position) > 85)
         {
             Destroy(this.gameObject);
         }
@@ -63,6 +70,14 @@ public class Alligator : MonoBehaviour
         else if (nav.desiredVelocity.x > 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GameManager.instance.Kill();
         }
     }
 }
