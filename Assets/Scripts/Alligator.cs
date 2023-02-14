@@ -47,6 +47,11 @@ public class Alligator : MonoBehaviour
                 moveTimer += Time.deltaTime;
             }
         }
+
+        if(Vector3.Distance(transform.position, player.transform.position) > 85)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void FaceDirection()
